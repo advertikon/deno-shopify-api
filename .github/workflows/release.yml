@@ -18,6 +18,9 @@ jobs:
         with:
           deno-version: v1.x
 
+      - name: Make .env
+        run: echo ${{ secrets.ENV }} >> .env
+
       - name: Test
         run: deno task test
 
@@ -37,3 +40,10 @@ jobs:
           name: ${{ steps.semver.outputs.next }}
           body: Changelog Contents
           token: ${{ github.token }}
+
+      - name: Slack Notification
+        uses: rtCamp/action-slack-notify@v2
+        env:
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+          SLACK_MESSAGE: "Version ${{ steps.semver.outputs.next }} has been released :rocket:"
+          SLACK_TITLE: Deno Shopify Release
