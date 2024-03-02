@@ -1,6 +1,6 @@
 // deno-lint-ignore-file require-await
 import { ulid } from "std/ulid/mod.ts";
-import { EventEmitter } from "events";
+import { EventEmitter } from "node:events";
 import {
     CbFunction,
     ClientParams,
