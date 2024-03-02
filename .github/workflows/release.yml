@@ -19,7 +19,7 @@ jobs:
           deno-version: v1.x
 
       - name: Make .env
-        run: echo ${{ secrets.ENV }} >> .env
+        run: echo '${{ secrets.ENV }}' > .env
 
       - name: Test
         run: deno task test

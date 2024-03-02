@@ -21,3 +21,5 @@ Thumbs.db
 
 # Ignore build artifacts
 build/
+
+cov/
