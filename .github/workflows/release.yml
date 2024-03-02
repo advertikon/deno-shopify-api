@@ -39,5 +39,4 @@ jobs:
         uses: rtCamp/action-slack-notify@v2
         env:
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
-          SLACK_TITLE: Deno Shopify Release
-          SLACK_FOOTER: ${{ steps.tag_version.outputs.changelog }}
+          SLACK_TITLE: Deno Shopify API Release
