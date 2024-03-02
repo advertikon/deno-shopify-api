@@ -1,5 +1,8 @@
 name: Deploy
 
+permissions:
+  contents: write
+
 on:
   push:
     branches:
@@ -26,26 +29,15 @@ jobs:
       - name: Test
         run: deno task test
 
-      - name: Get Next Version
-        id: semver
-        uses: ietf-tools/semver-action@v1
+      - name: Bump version and push tag
+        id: tag_version
+        uses: mathieudutour/github-tag-action@v6.1
         with:
-          token: ${{ github.token }}
-          branch: master
-
-      - name: Create Release
-        uses: ncipollo/release-action@v1.12.0
-        with:
-          allowUpdates: true
-          draft: false
-          makeLatest: true
-          name: ${{ steps.semver.outputs.next }}
-          body: Changelog Contents
-          token: ${{ github.token }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Slack Notification
         uses: rtCamp/action-slack-notify@v2
         env:
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
-          SLACK_MESSAGE: "Version ${{ steps.semver.outputs.next }} has been released :rocket:"
           SLACK_TITLE: Deno Shopify Release
+          SLACK_FOOTER: ${{ steps.tag_version.outputs.changelog }}
