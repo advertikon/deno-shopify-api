@@ -1,0 +1,66 @@
+{
+  "scriptId": "306",
+  "url": "file:///var/www/html/deno/shopify/api/tests/product.test.ts",
+  "functions": [
+    {
+      "functionName": "",
+      "ranges": [{ "startOffset": 0, "endOffset": 3088, "count": 1 }],
+      "isBlockCoverage": true
+    },
+    {
+      "functionName": "",
+      "ranges": [
+        { "startOffset": 366, "endOffset": 686, "count": 1 },
+        { "startOffset": 646, "endOffset": 684, "count": 5 }
+      ],
+      "isBlockCoverage": true
+    },
+    {
+      "functionName": "",
+      "ranges": [
+        { "startOffset": 731, "endOffset": 1115, "count": 1 },
+        { "startOffset": 995, "endOffset": 1113, "count": 5 }
+      ],
+      "isBlockCoverage": true
+    },
+    {
+      "functionName": "",
+      "ranges": [
+        { "startOffset": 1170, "endOffset": 1521, "count": 1 },
+        { "startOffset": 1481, "endOffset": 1519, "count": 5 }
+      ],
+      "isBlockCoverage": true
+    },
+    {
+      "functionName": "",
+      "ranges": [
+        { "startOffset": 1571, "endOffset": 2026, "count": 1 },
+        { "startOffset": 1906, "endOffset": 2024, "count": 5 }
+      ],
+      "isBlockCoverage": true
+    },
+    {
+      "functionName": "",
+      "ranges": [
+        { "startOffset": 2080, "endOffset": 2445, "count": 1 },
+        { "startOffset": 2405, "endOffset": 2443, "count": 5 }
+      ],
+      "isBlockCoverage": true
+    },
+    {
+      "functionName": "",
+      "ranges": [{ "startOffset": 2490, "endOffset": 2846, "count": 1 }],
+      "isBlockCoverage": true
+    },
+    {
+      "functionName": "",
+      "ranges": [{ "startOffset": 2701, "endOffset": 2809, "count": 5 }],
+      "isBlockCoverage": true
+    },
+    {
+      "functionName": "",
+      "ranges": [{ "startOffset": 2877, "endOffset": 3085, "count": 1 }],
+      "isBlockCoverage": true
+    }
+  ]
+}

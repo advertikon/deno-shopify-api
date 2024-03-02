@@ -1,0 +1,24 @@
+{
+  "scriptId": "308",
+  "url": "file:///var/www/html/deno/shopify/api/client.ts",
+  "functions": [
+    {
+      "functionName": "",
+      "ranges": [{ "startOffset": 0, "endOffset": 7161, "count": 1 }],
+      "isBlockCoverage": true
+    },
+    {
+      "functionName": "<instance_members_initializer>",
+      "ranges": [{ "startOffset": 227, "endOffset": 7160, "count": 0 }],
+      "isBlockCoverage": true
+    },
+    {
+      "functionName": "oauthPage",
+      "ranges": [
+        { "startOffset": 286, "endOffset": 558, "count": 1 },
+        { "startOffset": 364, "endOffset": 373, "count": 0 }
+      ],
+      "isBlockCoverage": true
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "scriptId": "306",
+  "url": "file:///var/www/html/deno/shopify/api/tests/oauth.test.ts",
+  "functions": [
+    {
+      "functionName": "",
+      "ranges": [{ "startOffset": 0, "endOffset": 676, "count": 1 }],
+      "isBlockCoverage": true
+    },
+    {
+      "functionName": "",
+      "ranges": [{ "startOffset": 131, "endOffset": 673, "count": 1 }],
+      "isBlockCoverage": true
+    }
+  ]
+}

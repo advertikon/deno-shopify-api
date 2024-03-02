@@ -1,0 +1,19 @@
+{
+  "scriptId": "308",
+  "url": "https://deno.land/std@0.218.2/assert/assert_exists.ts",
+  "functions": [
+    {
+      "functionName": "",
+      "ranges": [{ "startOffset": 0, "endOffset": 694, "count": 1 }],
+      "isBlockCoverage": true
+    },
+    {
+      "functionName": "assertExists",
+      "ranges": [
+        { "startOffset": 439, "endOffset": 693, "count": 35 },
+        { "startOffset": 523, "endOffset": 691, "count": 0 }
+      ],
+      "isBlockCoverage": true
+    }
+  ]
+}

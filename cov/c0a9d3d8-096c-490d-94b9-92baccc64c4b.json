@@ -1,0 +1,21 @@
+{
+  "scriptId": "313",
+  "url": "https://deno.land/std@0.218.2/ulid/mod.ts",
+  "functions": [
+    {
+      "functionName": "",
+      "ranges": [{ "startOffset": 0, "endOffset": 2604, "count": 1 }],
+      "isBlockCoverage": true
+    },
+    {
+      "functionName": "decodeTime",
+      "ranges": [{ "startOffset": 788, "endOffset": 1322, "count": 0 }],
+      "isBlockCoverage": false
+    },
+    {
+      "functionName": "ulid",
+      "ranges": [{ "startOffset": 2495, "endOffset": 2603, "count": 0 }],
+      "isBlockCoverage": false
+    }
+  ]
+}

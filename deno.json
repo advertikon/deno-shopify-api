@@ -1,0 +1,21 @@
+{
+  "name": "@bogochunas/shopify-api",
+  "version": "1.0.0",
+  "tasks": {
+    "test": "deno test --allow-net --allow-read --allow-env --coverage=cov",
+    "coverage": "deno coverage cov",
+    "lint": "deno lint",
+    "format": "deno fmt"
+  },
+  "compilerOptions": {
+    "strict": true
+  },
+  "imports": {
+    "std/": "https://deno.land/std@0.218.2/",
+    "events": "node:events"
+  },
+  "fmt": {
+    "lineWidth": 120,
+    "indentWidth": 4
+  }
+}

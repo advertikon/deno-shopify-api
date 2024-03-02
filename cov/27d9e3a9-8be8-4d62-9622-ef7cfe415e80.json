@@ -1,0 +1,157 @@
+{
+  "scriptId": "309",
+  "url": "file:///var/www/html/deno/shopify/api/client.ts",
+  "functions": [
+    {
+      "functionName": "",
+      "ranges": [{ "startOffset": 0, "endOffset": 7134, "count": 1 }],
+      "isBlockCoverage": true
+    },
+    {
+      "functionName": "<instance_members_initializer>",
+      "ranges": [{ "startOffset": 227, "endOffset": 7133, "count": 2 }],
+      "isBlockCoverage": true
+    },
+    {
+      "functionName": "oauthPage",
+      "ranges": [{ "startOffset": 286, "endOffset": 558, "count": 0 }],
+      "isBlockCoverage": false
+    },
+    {
+      "functionName": "ShopifyApi",
+      "ranges": [
+        { "startOffset": 561, "endOffset": 985, "count": 2 },
+        { "startOffset": 656, "endOffset": 722, "count": 0 },
+        { "startOffset": 738, "endOffset": 801, "count": 0 }
+      ],
+      "isBlockCoverage": true
+    },
+    {
+      "functionName": "getProducts",
+      "ranges": [{ "startOffset": 988, "endOffset": 1157, "count": 0 }],
+      "isBlockCoverage": false
+    },
+    {
+      "functionName": "paginateProducts",
+      "ranges": [{ "startOffset": 1160, "endOffset": 1555, "count": 0 }],
+      "isBlockCoverage": false
+    },
+    {
+      "functionName": "productsCount",
+      "ranges": [{ "startOffset": 1558, "endOffset": 1677, "count": 0 }],
+      "isBlockCoverage": false
+    },
+    {
+      "functionName": "getShop",
+      "ranges": [{ "startOffset": 1680, "endOffset": 1782, "count": 0 }],
+      "isBlockCoverage": false
+    },
+    {
+      "functionName": "getWebhooks",
+      "ranges": [{ "startOffset": 1785, "endOffset": 1899, "count": 0 }],
+      "isBlockCoverage": false
+    },
+    {
+      "functionName": "createWebhook",
+      "ranges": [{ "startOffset": 1902, "endOffset": 2264, "count": 0 }],
+      "isBlockCoverage": false
+    },
+    {
+      "functionName": "deleteWebhook",
+      "ranges": [{ "startOffset": 2267, "endOffset": 2395, "count": 0 }],
+      "isBlockCoverage": false
+    },
+    {
+      "functionName": "getCollection",
+      "ranges": [{ "startOffset": 2398, "endOffset": 2549, "count": 0 }],
+      "isBlockCoverage": false
+    },
+    {
+      "functionName": "getCollectionProducts",
+      "ranges": [{ "startOffset": 2552, "endOffset": 2809, "count": 0 }],
+      "isBlockCoverage": false
+    },
+    {
+      "functionName": "getCustomCollections",
+      "ranges": [{ "startOffset": 2812, "endOffset": 3062, "count": 1 }],
+      "isBlockCoverage": true
+    },
+    {
+      "functionName": "getSmartCollections",
+      "ranges": [{ "startOffset": 3065, "endOffset": 3313, "count": 1 }],
+      "isBlockCoverage": true
+    },
+    {
+      "functionName": "getCollections",
+      "ranges": [{ "startOffset": 3316, "endOffset": 3567, "count": 0 }],
+      "isBlockCoverage": false
+    },
+    {
+      "functionName": "getRecurringCharges",
+      "ranges": [{ "startOffset": 3570, "endOffset": 3782, "count": 0 }],
+      "isBlockCoverage": false
+    },
+    {
+      "functionName": "createRecurringCharge",
+      "ranges": [{ "startOffset": 3785, "endOffset": 4154, "count": 0 }],
+      "isBlockCoverage": false
+    },
+    {
+      "functionName": "cancelRecurringCharge",
+      "ranges": [{ "startOffset": 4157, "endOffset": 4394, "count": 0 }],
+      "isBlockCoverage": false
+    },
+    {
+      "functionName": "send",
+      "ranges": [{ "startOffset": 4397, "endOffset": 4733, "count": 0 }],
+      "isBlockCoverage": false
+    },
+    {
+      "functionName": "paginate",
+      "ranges": [
+        { "startOffset": 4736, "endOffset": 6360, "count": 2 },
+        { "startOffset": 5065, "endOffset": 5076, "count": 0 },
+        { "startOffset": 5153, "endOffset": 5184, "count": 0 },
+        { "startOffset": 5206, "endOffset": 5261, "count": 0 },
+        { "startOffset": 5637, "endOffset": 5710, "count": 0 },
+        { "startOffset": 5807, "endOffset": 5841, "count": 0 },
+        { "startOffset": 5955, "endOffset": 5964, "count": 0 },
+        { "startOffset": 6069, "endOffset": 6075, "count": 0 },
+        { "startOffset": 6094, "endOffset": 6147, "count": 0 },
+        { "startOffset": 6152, "endOffset": 6158, "count": 0 },
+        { "startOffset": 6202, "endOffset": 6209, "count": 0 },
+        { "startOffset": 6228, "endOffset": 6233, "count": 0 },
+        { "startOffset": 6256, "endOffset": 6318, "count": 0 },
+        { "startOffset": 6324, "endOffset": 6345, "count": 0 },
+        { "startOffset": 6346, "endOffset": 6355, "count": 0 }
+      ],
+      "isBlockCoverage": true
+    },
+    {
+      "functionName": "",
+      "ranges": [{ "startOffset": 6159, "endOffset": 6201, "count": 0 }],
+      "isBlockCoverage": false
+    },
+    {
+      "functionName": "processResponse",
+      "ranges": [
+        { "startOffset": 6363, "endOffset": 6906, "count": 2 },
+        { "startOffset": 6602, "endOffset": 6905, "count": 0 }
+      ],
+      "isBlockCoverage": true
+    },
+    {
+      "functionName": "getResponseBody",
+      "ranges": [
+        { "startOffset": 6909, "endOffset": 7131, "count": 2 },
+        { "startOffset": 7099, "endOffset": 7130, "count": 0 }
+      ],
+      "isBlockCoverage": true
+    },
+    {
+      "functionName": "",
+      "ranges": [{ "startOffset": 7056, "endOffset": 7091, "count": 0 }],
+      "isBlockCoverage": false
+    }
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "scriptId": "306",
+  "url": "file:///var/www/html/deno/shopify/api/tests/product.test.ts",
+  "functions": [
+    {
+      "functionName": "",
+      "ranges": [{ "startOffset": 0, "endOffset": 1857, "count": 1 }],
+      "isBlockCoverage": true
+    },
+    {
+      "functionName": "",
+      "ranges": [
+        { "startOffset": 280, "endOffset": 600, "count": 1 },
+        { "startOffset": 560, "endOffset": 598, "count": 5 }
+      ],
+      "isBlockCoverage": true
+    },
+    {
+      "functionName": "",
+      "ranges": [
+        { "startOffset": 645, "endOffset": 1029, "count": 1 },
+        { "startOffset": 909, "endOffset": 1027, "count": 5 }
+      ],
+      "isBlockCoverage": true
+    },
+    {
+      "functionName": "",
+      "ranges": [
+        { "startOffset": 1084, "endOffset": 1435, "count": 1 },
+        { "startOffset": 1395, "endOffset": 1433, "count": 5 }
+      ],
+      "isBlockCoverage": true
+    },
+    {
+      "functionName": "",
+      "ranges": [
+        { "startOffset": 1489, "endOffset": 1854, "count": 1 },
+        { "startOffset": 1814, "endOffset": 1852, "count": 5 }
+      ],
+      "isBlockCoverage": true
+    }
+  ]
+}
