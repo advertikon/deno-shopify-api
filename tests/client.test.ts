@@ -10,10 +10,10 @@ Deno.test("Event emitter", async () => {
         accessToken: Deno.env.get("API_TOKEN") as string,
         shop: Deno.env.get("SHOP_NAME") as string,
     });
-    let message = "";
-    api.on("test", (m) => {
-        message = m;
+    let url = "";
+    api.on("error", (m) => {
+        url = m.url;
     });
-    api.emit("test", "Hello, world!");
-    assertEquals(message, "Hello, world!");
+    api.emit("error", { url: "https://example.com", status: 404 });
+    assertEquals(url, "https://example.com");
 });
