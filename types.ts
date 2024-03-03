@@ -1,4 +1,4 @@
-export type ClientParams = { shop: string; accessToken: string; apiVersion?: string; };
+export type ClientParams = { shop: string; accessToken: string; apiVersion?: string };
 export type OauthContext = { redirectUrl: string; scopes: string; clientId: string; nonce?: string };
 
 export type ShopifyProduct = {
@@ -56,7 +56,7 @@ export type ShopifyProduct = {
         updated_at: string;
     }[];
     vendor: string;
-}
+};
 
 export type GetProductOptions = {
     collection_id?: number;
@@ -69,14 +69,14 @@ export type GetProductOptions = {
     product_type?: string;
     published_at_max?: string;
     published_at_min?: string;
-    published_status?: 'published' | 'unpublished' | 'any';
+    published_status?: "published" | "unpublished" | "any";
     since_id?: number;
-    status?: 'active' | 'archived' | 'draft';
+    status?: "active" | "archived" | "draft";
     title?: string;
     undated_at_max?: string;
     updated_at_min?: string;
     vendor?: string;
-}
+};
 
 export type GetCollectionOptions = {
     fields?: string;
@@ -86,12 +86,12 @@ export type GetCollectionOptions = {
     product_id?: number;
     published_at_max?: string;
     published_at_min?: string;
-    published_status?: 'published' | 'unpublished' | 'any';
+    published_status?: "published" | "unpublished" | "any";
     since_id?: number;
     title?: string;
     updated_at_min?: string;
     updated_at_max?: string;
-}
+};
 
 export type PaginateOptions<T> = {
     targetUrl: string;
@@ -234,5 +234,6 @@ export type CrateRecurringChargeOptions = {
     price: number;
     return_url: string;
     test?: boolean;
-}
+};
 
+export type EventType = "error" | "request" | "unauthorized";

@@ -5,6 +5,7 @@ import {
     CbFunction,
     ClientParams,
     CrateRecurringChargeOptions,
+    EventType,
     GetCollectionOptions,
     GetProductOptions,
     OauthContext,
@@ -50,6 +51,11 @@ export class ShopifyApi extends EventEmitter {
         this.accessToken = accessToken;
         this.apiVersion = apiVersion;
         this.baseUrl = `https://${this.shop}/admin/api/${this.apiVersion}`;
+    }
+
+    on(eventName: EventType, listener: (...args: any[]) => void): this {
+        super.on(eventName, listener);
+        return this;
     }
 
     async getProducts(options: GetProductOptions = {}): Promise<ShopifyProduct[]> {
