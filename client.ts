@@ -53,9 +53,16 @@ export class ShopifyApi extends EventEmitter {
         this.baseUrl = `https://${this.shop}/admin/api/${this.apiVersion}`;
     }
 
+    on(eventName: "request", listener: (data: { status: number; url: string }) => void): this;
+    on(eventName: "error", listener: (data: { status: number; url: string; body: any }) => void): this;
+    on(eventName: "unauthorized", listener: (data: { url: string }) => void): this;
     on(eventName: EventType, listener: (...args: any[]) => void): this {
         super.on(eventName, listener);
         return this;
+    }
+
+    emit(eventName: EventType, ...args: any[]): boolean {
+        return super.emit(eventName, ...args);
     }
 
     async getProducts(options: GetProductOptions = {}): Promise<ShopifyProduct[]> {
@@ -290,6 +297,7 @@ export class ShopifyApi extends EventEmitter {
         }
 
         if (response.status === 401) {
+            this.emit("unauthorized", { url });
             throw new Error("Unauthorized");
         }
 
