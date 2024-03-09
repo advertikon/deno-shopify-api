@@ -8,6 +8,7 @@ import {
     EventType,
     GetCollectionOptions,
     GetProductOptions,
+    GetWebhookOptions,
     OauthContext,
     PaginateAbleEntity,
     PaginateOptions,
@@ -102,8 +103,8 @@ export class ShopifyApi extends EventEmitter {
         return this.send<{ shop: ShopifyShop }>(url).then((resp) => resp.shop);
     }
 
-    async getWebhooks() {
-        const url = `/webhooks.json`;
+    async getWebhooks(options: GetWebhookOptions = {}) {
+        const url = `/webhooks.json?${MakeQueryString(options)}`;
         return this.send<{ webhooks: ShopifyWebhook[] }>(url).then((resp) => resp.webhooks);
     }
 

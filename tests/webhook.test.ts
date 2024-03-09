@@ -23,6 +23,11 @@ Deno.test("Webhook", async (test1) => {
         assert(Array.isArray(webhooks));
         assert(webhooks.some((webhook) => webhook.topic === topic && webhook.address === address));
 
+        const webhooks2 = await api.getWebhooks({ topic, address });
+
+        assert(Array.isArray(webhooks2));
+        assert(webhooks2.some((webhook) => webhook.topic === topic && webhook.address === address));
+
         await test2.step("Delete webhook", async () => {
             await api.deleteWebhook(webhook.id);
             const webhooks = await api.getWebhooks();

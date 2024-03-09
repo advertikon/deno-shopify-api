@@ -93,6 +93,18 @@ export type GetCollectionOptions = {
     updated_at_max?: string;
 };
 
+export type GetWebhookOptions = {
+    address?: string;
+    created_at_min?: string;
+    created_at_max?: string;
+    fields?: string;
+    limit?: number;
+    since_id?: number;
+    topic?: string;
+    updated_at_min?: string;
+    updated_at_max?: string;
+};
+
 export type PaginateOptions<T> = {
     targetUrl: string;
     totalCount?: number;
