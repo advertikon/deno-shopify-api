@@ -105,6 +105,19 @@ export type GetWebhookOptions = {
     updated_at_max?: string;
 };
 
+export type GetMetafieldOptions = {
+    created_at_min?: string;
+    created_at_max?: string;
+    fields?: string;
+    key?: string;
+    limit?: number;
+    namespace?: string;
+    since_id?: number;
+    type?: string;
+    updated_at_min?: string;
+    updated_at_max?: string;
+};
+
 export type PaginateOptions<T> = {
     targetUrl: string;
     totalCount?: number;
@@ -249,3 +262,16 @@ export type CrateRecurringChargeOptions = {
 };
 
 export type EventType = "error" | "request" | "unauthorized";
+
+export type ShopifyMetafield = {
+    created_at: string;
+    description: string;
+    id: number;
+    key: string;
+    namespace: string;
+    owner_id: number;
+    owner_resource: string;
+    updated_at: string;
+    value: string;
+    type: string;
+};

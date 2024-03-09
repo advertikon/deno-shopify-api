@@ -7,6 +7,7 @@ import {
     CrateRecurringChargeOptions,
     EventType,
     GetCollectionOptions,
+    GetMetafieldOptions,
     GetProductOptions,
     GetWebhookOptions,
     OauthContext,
@@ -14,6 +15,7 @@ import {
     PaginateOptions,
     ShopifyCollection,
     ShopifyCustomCollection,
+    ShopifyMetafield,
     ShopifyProduct,
     ShopifyRecurringCharge,
     ShopifyShop,
@@ -21,6 +23,7 @@ import {
     ShopifyWebhook,
 } from "./types.ts";
 import { ensureShopName, MakeQueryString } from "./helpers.ts";
+import { MetafieldResource } from "./constants.ts";
 
 export class ShopifyApi extends EventEmitter {
     protected readonly apiVersion: string;
@@ -203,6 +206,38 @@ export class ShopifyApi extends EventEmitter {
             method: "DELETE",
             headers: { "Content-Type": "application/json" },
         });
+    }
+
+    async getResourceMetafields(
+        resourceType: MetafieldResource,
+        resourceId: number,
+        options: GetMetafieldOptions = {},
+    ): Promise<ShopifyMetafield[]> {
+        const url = `/${resourceType}/${resourceId}/metafields.json?${MakeQueryString(options)}`;
+        return this.send<{ metafields: ShopifyMetafield[] }>(url).then((resp) => resp.metafields);
+    }
+
+    async getResourceMetafield(
+        resourceType: MetafieldResource,
+        resourceId: number,
+        metafieldId: number,
+        options: GetMetafieldOptions = {},
+    ): Promise<ShopifyMetafield[]> {
+        const url = `/${resourceType}/${resourceId}/metafields/${metafieldId}.json?${MakeQueryString(options)}`;
+        return this.send<{ metafields: ShopifyMetafield[] }>(url).then((resp) => resp.metafields);
+    }
+
+    async setMetafieldValue(
+        resourceType: MetafieldResource,
+        resourceId: number,
+        metafieldId: number,
+        value: string,
+    ): Promise<ShopifyMetafield> {
+        const url = `/${resourceType}/${resourceId}/metafields/${metafieldId}.json`;
+        return this.send<{ metafield: ShopifyMetafield }>(url, {
+            method: "PUT",
+            body: JSON.stringify({ metafield: { id: metafieldId, value } }),
+        }).then((resp) => resp.metafield);
     }
 
     private async send<T>(
