@@ -231,12 +231,15 @@ export class ShopifyApi extends EventEmitter {
         resourceType: MetafieldResource,
         resourceId: number,
         metafieldId: number,
-        value: string,
+        value: string | string[],
     ): Promise<ShopifyMetafield> {
         const url = `/${resourceType}/${resourceId}/metafields/${metafieldId}.json`;
         return this.send<{ metafield: ShopifyMetafield }>(url, {
             method: "PUT",
-            body: JSON.stringify({ metafield: { id: metafieldId, value } }),
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+                metafield: { id: metafieldId, value: Array.isArray(value) ? JSON.stringify(value) : value },
+            }),
         }).then((resp) => resp.metafield);
     }
 

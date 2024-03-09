@@ -15,3 +15,25 @@ Deno.test("Metafield", async () => {
 
     assert(Array.isArray(metafields));
 });
+
+// Deno.test("Save Metafield", async () => {
+//     const api = new ShopifyApi({
+//         accessToken: Deno.env.get("API_TOKEN") as string,
+//         shop: Deno.env.get("SHOP_NAME") as string,
+//     });
+
+//     const metafield = await api.setMetafieldValue(
+//         MetafieldResource.PRODUCT,
+//         7829000323314,
+//         27421500604658,
+//         [
+//             "1111|a|b",
+//             "3333|b|3",
+//         ],
+//     );
+
+//     const metafields = await api.getResourceMetafields(MetafieldResource.PRODUCT, 7829000323314);
+//     console.log(metafields);
+
+//     assert(metafield.id);
+// });
