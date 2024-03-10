@@ -1,5 +1,7 @@
 // deno-lint-ignore-file require-await
 import { ulid } from "std/ulid/mod.ts";
+import { retry } from "std/async/retry.ts";
+
 import { EventEmitter } from "node:events";
 import {
     CbFunction,
@@ -280,7 +282,10 @@ export class ShopifyApi extends EventEmitter {
 
         const apiUrl = `${this.baseUrl}${url}`;
 
-        return fetch(apiUrl, options).then((response) => this.processResponse<T>(response, apiUrl, defaultValue));
+        return retry(
+            () => fetch(apiUrl, options).then((response) => this.processResponse<T>(response, apiUrl, defaultValue)),
+            { maxAttempts: 3 },
+        );
     }
 
     private async paginate<T extends PaginateAbleEntity>(opts: PaginateOptions<T>): Promise<T[]>;
@@ -315,7 +320,9 @@ export class ShopifyApi extends EventEmitter {
                 "X-Shopify-Access-Token": this.accessToken,
             };
 
-            const response = await fetch(apiUrl, options);
+            const response = await retry(() => fetch(apiUrl, options), {
+                maxAttempts: 3,
+            });
             const res = await this.processResponse<Record<string, T[]>>(response, apiUrl);
 
             // there should be only one key, eg { products: [] }
