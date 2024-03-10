@@ -283,7 +283,10 @@ export class ShopifyApi extends EventEmitter {
         const apiUrl = `${this.baseUrl}${url}`;
 
         return retry(
-            () => fetch(apiUrl, options).then((response) => this.processResponse<T>(response, apiUrl, defaultValue)),
+            () =>
+                fetch(apiUrl, options).then(this.checkForRetry).then((response) =>
+                    this.processResponse<T>(response, apiUrl, defaultValue)
+                ),
             { maxAttempts: 3 },
         );
     }
@@ -320,7 +323,7 @@ export class ShopifyApi extends EventEmitter {
                 "X-Shopify-Access-Token": this.accessToken,
             };
 
-            const response = await retry(() => fetch(apiUrl, options), {
+            const response = await retry(() => fetch(apiUrl, options).then(this.checkForRetry), {
                 maxAttempts: 3,
             });
             const res = await this.processResponse<Record<string, T[]>>(response, apiUrl);
@@ -389,5 +392,13 @@ export class ShopifyApi extends EventEmitter {
         }
 
         return response.text();
+    }
+
+    protected checkForRetry(response: Response) {
+        if (response.status === 429) {
+            throw new Error("Rate limit exceeded");
+        }
+
+        return response;
     }
 }
