@@ -118,6 +118,54 @@ export type GetMetafieldOptions = {
     updated_at_max?: string;
 };
 
+export type CreateMetafieldOptions = {
+    namespace: string;
+    key: string;
+    value: string | string[];
+    type:
+        | "boolean"
+        | "color"
+        | "date"
+        | "date_time"
+        | "dimension"
+        | "json"
+        | "money"
+        | "multiline_text_field"
+        | "number_decimal"
+        | "number_integer"
+        | "rating"
+        | "rich_text_field"
+        | "single_line_text_field"
+        | "url"
+        | "volume"
+        | "weight"
+        | "collection_reference"
+        | "file_reference"
+        | "metaobject_reference"
+        | "mixed_reference"
+        | "page_reference"
+        | "product_reference"
+        | "product_variant_reference"
+        | "list.collection_reference"
+        | "list.color"
+        | "list.date"
+        | "list.date_time"
+        | "list.dimension"
+        | "list.file_reference"
+        | "list.metaobject_reference"
+        | "list.mixed_reference"
+        | "list.number_integer"
+        | "list.number_decimal"
+        | "list.page_reference"
+        | "list.product_reference"
+        | "list.rating"
+        | "list.single_line_text_field"
+        | "list.url"
+        | "list.variant_reference"
+        | "list.volume"
+        | "list.weight";
+};
+
 export type PaginateOptions<T> = {
     targetUrl: string;
     totalCount?: number;

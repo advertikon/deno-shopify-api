@@ -5,6 +5,7 @@ import {
     CbFunction,
     ClientParams,
     CrateRecurringChargeOptions,
+    CreateMetafieldOptions,
     EventType,
     GetCollectionOptions,
     GetMetafieldOptions,
@@ -222,9 +223,33 @@ export class ShopifyApi extends EventEmitter {
         resourceId: number,
         metafieldId: number,
         options: GetMetafieldOptions = {},
-    ): Promise<ShopifyMetafield[]> {
+    ): Promise<ShopifyMetafield> {
         const url = `/${resourceType}/${resourceId}/metafields/${metafieldId}.json?${MakeQueryString(options)}`;
-        return this.send<{ metafields: ShopifyMetafield[] }>(url).then((resp) => resp.metafields);
+        return this.send<{ metafield: ShopifyMetafield }>(url).then((resp) => resp.metafield);
+    }
+
+    async createMetafield(
+        resourceType: MetafieldResource,
+        resourceId: number,
+        metafield: CreateMetafieldOptions,
+    ): Promise<ShopifyMetafield> {
+        const url = `/${resourceType}/${resourceId}/metafields.json`;
+
+        if (Array.isArray(metafield.value)) {
+            metafield.value = JSON.stringify(metafield.value);
+        }
+
+        const body = JSON.stringify({ metafield });
+        return this.send<{ metafield: ShopifyMetafield }>(url, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body,
+        }).then((resp) => resp.metafield);
+    }
+
+    async deleteMetafield(resourceType: MetafieldResource, resourceId: number, metafieldId: number): Promise<void> {
+        const url = `/${resourceType}/${resourceId}/metafields/${metafieldId}.json`;
+        return this.send(url, { method: "DELETE" });
     }
 
     async setMetafieldValue(
