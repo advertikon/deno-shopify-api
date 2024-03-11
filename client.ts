@@ -1,3 +1,4 @@
+// deno-lint-ignore-file
 // deno-lint-ignore-file require-await
 import { ulid } from "std/ulid/mod.ts";
 import { retry } from "std/async/retry.ts";
@@ -344,12 +345,11 @@ export class ShopifyApi extends EventEmitter {
 
         return retry(
             () => {
-                this.emit("request", { url: apiUrl, method: (options as RequestInit).method ?? "GET" });
+                this.emit("request", { url: apiUrl, method: options.method ?? "GET" });
                 return fetch(apiUrl, options)
                     .then(this.checkForRetry)
                     .then((response) => this.processResponse<T>(response, apiUrl, defaultValue));
             },
-            { maxAttempts: 3 },
         ) as T;
     }
 
@@ -399,9 +399,6 @@ export class ShopifyApi extends EventEmitter {
                             console.log(e);
                             throw e;
                         });
-                },
-                {
-                    maxAttempts: 3,
                 },
             );
 
