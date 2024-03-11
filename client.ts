@@ -50,11 +50,11 @@ export class ShopifyApi extends EventEmitter {
         super();
 
         if (!accessToken) {
-            this.emit("error", new Error("Shopify access token is required"));
+            throw new Error("Shopify access token is required");
         }
 
         if (!shop) {
-            this.emit("error", new Error("Shopify shop name is required"));
+            throw new Error("Shopify shop name is required");
         }
 
         this.shop = ensureShopName(shop);
@@ -389,7 +389,12 @@ export class ShopifyApi extends EventEmitter {
             const response = await retry(
                 () => {
                     this.emit("request", { url: apiUrl });
-                    return fetch(apiUrl, options).then(this.checkForRetry);
+                    return fetch(apiUrl, options)
+                        .then(this.checkForRetry)
+                        .catch((e) => {
+                            console.log(e);
+                            throw e;
+                        });
                 },
                 {
                     maxAttempts: 3,
@@ -432,7 +437,7 @@ export class ShopifyApi extends EventEmitter {
                 ?.match(/page_info=(\w+)/)?.[1];
 
             if (!pageInfo) {
-                this.emit("error", Error("No page_info in response"));
+                throw Error("No page_info in response");
             }
         }
 
@@ -453,14 +458,14 @@ export class ShopifyApi extends EventEmitter {
 
         if (response.status === 401) {
             this.emit("unauthorized", { url });
-            this.emit("error", { status: response.status, url, body });
+            throw new Error(`Unauthorized: ${url}`);
         }
 
         if (defaultValue) {
             return defaultValue;
         }
 
-        this.emit("error", { status: response.status, url, body });
+        throw new Error(`Request failed (${response.status}): ${url} - ${body}`);
     }
 
     protected async getResponseBody(response: Response) {
@@ -475,7 +480,7 @@ export class ShopifyApi extends EventEmitter {
 
     protected checkForRetry = (response: Response) => {
         if (response.status === 429) {
-            this.emit("error", Error("Rate limit exceeded"));
+            throw Error("Rate limit exceeded");
         }
 
         return response;
