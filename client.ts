@@ -65,6 +65,10 @@ export class ShopifyApi extends EventEmitter {
 
     on(
         eventName: "request",
+        listener: (data: { url: string }) => void,
+    ): this;
+    on(
+        eventName: "response",
         listener: (data: { status: number; url: string }) => void,
     ): this;
     on(
@@ -340,7 +344,7 @@ export class ShopifyApi extends EventEmitter {
 
         return retry(
             () => {
-                this.emit("request", { url: apiUrl });
+                this.emit("request", { url: apiUrl, method: (options as RequestInit).method ?? "GET" });
                 return fetch(apiUrl, options)
                     .then(this.checkForRetry)
                     .then((response) => this.processResponse<T>(response, apiUrl, defaultValue));
@@ -388,7 +392,7 @@ export class ShopifyApi extends EventEmitter {
 
             const response = await retry(
                 () => {
-                    this.emit("request", { url: apiUrl });
+                    this.emit("request", { url: apiUrl, method: (options as RequestInit).method ?? "GET" });
                     return fetch(apiUrl, options)
                         .then(this.checkForRetry)
                         .catch((e) => {
@@ -452,7 +456,7 @@ export class ShopifyApi extends EventEmitter {
         const body = await this.getResponseBody(response);
 
         if (response.ok) {
-            this.emit("request", { status: response.status, url });
+            this.emit("response", { status: response.status, url });
             return body as T;
         }
 
@@ -465,7 +469,7 @@ export class ShopifyApi extends EventEmitter {
             return defaultValue;
         }
 
-        throw new Error(`Request failed (${response.status}): ${url} - ${body}`);
+        throw new Error(`Request failed (${response.status}): ${url} - ${JSON.stringify(body)}`);
     }
 
     protected async getResponseBody(response: Response) {

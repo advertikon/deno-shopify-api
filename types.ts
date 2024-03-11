@@ -309,7 +309,7 @@ export type CrateRecurringChargeOptions = {
     test?: boolean;
 };
 
-export type EventType = "error" | "request" | "unauthorized";
+export type EventType = "error" | "request" | "response" | "unauthorized";
 
 export type ShopifyMetafield = {
     created_at: string;
